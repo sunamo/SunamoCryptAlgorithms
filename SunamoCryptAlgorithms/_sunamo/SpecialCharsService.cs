@@ -1,8 +1,5 @@
 namespace SunamoCryptAlgorithms._sunamo;
 
-/// <summary>
-/// Provides lists of special characters for classification and filtering.
-/// </summary>
 internal class SpecialCharsService
 {
     internal readonly List<char> SpecialChars = new(new[]
@@ -13,16 +10,14 @@ internal class SpecialCharsService
         comma, period, colon, apostrophe, rightParenthesis, solidus, lessThan, greaterThan, leftCurlyBracket, rightCurlyBracket, leftSquareBracket, verticalBar, semicolon, plus, rightSquareBracket,
         enDash, forwardSlash
     });
-    /// <summary>
-    /// Used in enigma.
-    /// </summary>
+    // Used in enigma.
 #pragma warning disable CS0649
     internal readonly List<char>? SpecialCharsAll;
 #pragma warning restore CS0649
     internal readonly List<char> SpecialCharsWhite = new(new[] { space });
     internal readonly List<char> SpecialCharsNotEnigma = new(new[] { nonBreakingSpace, copyright });
-    private const char leftApostrophe = '\u2018';
-    private const char rightApostrophe = '\u2019';
+    private const char leftApostrophe = '‘';
+    private const char rightApostrophe = '’';
     private const char comma = ',';
     private const char space = ' ';
     private static char nonBreakingSpace = (char)160;
@@ -40,9 +35,7 @@ internal class SpecialCharsService
     private const char solidus = '/';
     private const char underscore = '_';
     private const char lessThan = '<';
-    /// <summary>
-    /// Skipped in SpecialCharsExtended - already used as equals.
-    /// </summary>
+    // Skipped in SpecialCharsExtended - already used as equals.
     private const char equalsSign = '=';
     private const char greaterThan = '>';
     private const char ampersand = '&';
@@ -56,10 +49,10 @@ internal class SpecialCharsService
     private const char rightSquareBracket = ']';
     private const char hash = '#';
     private const char percent = '%';
-    private const char enDash = '\u2013';
-    private const char copyright = '\u00A9';
-    private const char leftQuote = '\u201C';
-    private const char rightQuote = '\u201D';
+    private const char enDash = '–';
+    private const char copyright = '©';
+    private const char leftQuote = '“';
+    private const char rightQuote = '”';
     private const char zero = '0';
     private const char modulo = '%';
     private const char dash = '-';
@@ -70,8 +63,6 @@ internal class SpecialCharsService
     private const char leftBracket = '(';
     private const char rightBracket = ')';
     private const char forwardSlash = '/';
-    /// <summary>
-    /// Backspace character.
-    /// </summary>
+    // Backspace character.
     private const char backspace = '\b';
 }

@@ -1,27 +1,11 @@
 namespace SunamoCryptAlgorithms.Crypting;
 
-/// <summary>
-/// Hash functions are fundamental to modern cryptography. These functions map binary
-/// strings of an arbitrary length to small binary strings of a fixed length, known as
-/// hash values. A cryptographic hash function has the property that it is computationally
-/// infeasible to find two distinct inputs that hash to the same value. Hash functions
-/// are commonly used with digital signatures and for data integrity.
-/// </summary>
 public partial class Hash
 {
-    /// <summary>
-    /// Internal CRC32 hash algorithm implementation.
-    /// </summary>
     private class CRC32 : HashAlgorithm
     {
         private uint _result = 0xffffffff;
 
-        /// <summary>
-        /// Processes each byte of the input array through the CRC32 lookup table.
-        /// </summary>
-        /// <param name="array">The input byte array.</param>
-        /// <param name="ibStart">The starting index in the array.</param>
-        /// <param name="cbSize">The number of bytes to process.</param>
         protected override void HashCore(byte[] array, int ibStart, int cbSize)
         {
             uint lookup = 0;
@@ -33,9 +17,6 @@ public partial class Hash
             }
         }
 
-        /// <summary>
-        /// Finalizes the hash computation by negating and reversing the result bytes.
-        /// </summary>
         protected override byte[] HashFinal()
         {
             byte[] resultBytes = BitConverter.GetBytes(~_result);
@@ -43,17 +24,11 @@ public partial class Hash
             return resultBytes;
         }
 
-        /// <summary>
-        /// Resets the CRC32 state to its initial value.
-        /// </summary>
         public override void Initialize()
         {
             _result = 0xffffffff;
         }
 
-        /// <summary>
-        /// CRC32 lookup table containing 256 precomputed values (1024 bytes total).
-        /// </summary>
         private uint[] _crcLookup =
         {
             0x0,
@@ -314,9 +289,6 @@ public partial class Hash
             0x2d02ef8d
         };
 
-        /// <summary>
-        /// Returns the computed CRC32 hash as a byte array.
-        /// </summary>
         public override byte[] Hash
         {
             get
