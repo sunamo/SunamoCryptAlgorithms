@@ -1,5 +1,5 @@
 ---
-schema_version: 6
+schema_version: 7
 type: library
 file_count: 54
 avg_lines_per_file: 135
@@ -7,11 +7,11 @@ move_to_legacy_percent: 5
 generated_date: 2026-10-01
 generated_time: 16:43:10
 github_source_url: 
-last_build_ok: 
-last_build_date: 
-last_tests_run_date: 
-covered_lines: 
-total_lines: 
+last_build_ok: yes
+last_build_date: 2026-10-02
+last_tests_run_date: 2026-10-02
+covered_lines: 27
+total_lines: 6877
 ---
 
 ## Description
