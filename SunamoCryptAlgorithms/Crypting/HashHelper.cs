@@ -44,9 +44,9 @@ public class HashHelper
         var hash = MD5.Create();
         byte[] data = hash.ComputeHash(encoding.GetBytes(text));
         var stringBuilder = new StringBuilder();
-        for (int i = 0; i < data.Length; i++)
+        for (int index = 0; index < data.Length; index++)
         {
-            stringBuilder.Append(data[i].ToString("x2"));
+            stringBuilder.Append(data[index].ToString("x2"));
         }
 
         return stringBuilder.ToString();

@@ -32,16 +32,16 @@ public class Utils
             int length = Convert.ToInt32(hexEncoded.Length / 2);
             var byteList = new List<byte>(length);
 
-            for (int i = 0; i <= length - 1; i++)
+            for (int index = 0; index <= length - 1; index++)
             {
-                byteList.Add(Convert.ToByte(hexEncoded.Substring(i * 2, 2), 16));
+                byteList.Add(Convert.ToByte(hexEncoded.Substring(index * 2, 2), 16));
             }
 
             return byteList;
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            throw new Exception(Translate.FromKey(XlfKeys.TheProvidedStringDoesNotAppearToBeHexEncoded) + ":" + Environment.NewLine + hexEncoded + Environment.NewLine + Exceptions.TextOfExceptions(ex));
+            throw new Exception(Translate.FromKey(XlfKeys.TheProvidedStringDoesNotAppearToBeHexEncoded) + ":" + Environment.NewLine + hexEncoded + Environment.NewLine + Exceptions.TextOfExceptions(exception));
         }
     }
 
@@ -56,9 +56,9 @@ public class Utils
         {
             return Convert.FromBase64String(base64Encoded);
         }
-        catch (FormatException ex)
+        catch (FormatException exception)
         {
-            throw new Exception(Translate.FromKey(XlfKeys.TheProvidedStringDoesNotAppearToBeBase64Encoded) + ":" + Environment.NewLine + base64Encoded + Environment.NewLine + ex.Message);
+            throw new Exception(Translate.FromKey(XlfKeys.TheProvidedStringDoesNotAppearToBeBase64Encoded) + ":" + Environment.NewLine + base64Encoded + Environment.NewLine + exception.Message);
         }
     }
 

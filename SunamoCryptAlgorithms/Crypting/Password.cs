@@ -20,24 +20,24 @@ public class Password
         var result = new StringBuilder(passwordLength);
         rng.GetBytes(randomBytes);
         var random = new Random();
-        for (int i = 0; i < countCharsLower; i++)
+        for (int index = 0; index < countCharsLower; index++)
         {
-            result.Insert(random.Next(0, result.Length - 1), allowedCharsLower[(int)randomBytes[i] % allowedCharsLower.Count]);
+            result.Insert(random.Next(0, result.Length - 1), allowedCharsLower[(int)randomBytes[index] % allowedCharsLower.Count]);
         }
         rng.GetBytes(randomBytes);
-        for (int i = 0; i < countCharsUpper; i++)
+        for (int upperIndex = 0; upperIndex < countCharsUpper; upperIndex++)
         {
-            result.Insert(random.Next(0, result.Length - 1), allowedCharsUpper[(int)randomBytes[i] % allowedCharsUpper.Count]);
+            result.Insert(random.Next(0, result.Length - 1), allowedCharsUpper[(int)randomBytes[upperIndex] % allowedCharsUpper.Count]);
         }
         rng.GetBytes(randomBytes);
-        for (int i = 0; i < countCharsNumbers; i++)
+        for (int numberIndex = 0; numberIndex < countCharsNumbers; numberIndex++)
         {
-            result.Insert(random.Next(0, result.Length - 1), allowedCharsNumbers[(int)randomBytes[i] % allowedCharsNumbers.Count]);
+            result.Insert(random.Next(0, result.Length - 1), allowedCharsNumbers[(int)randomBytes[numberIndex] % allowedCharsNumbers.Count]);
         }
         rng.GetBytes(randomBytes);
-        for (int i = 0; i < countCharsSpecial; i++)
+        for (int specialIndex = 0; specialIndex < countCharsSpecial; specialIndex++)
         {
-            result.Insert(random.Next(0, result.Length - 1), allowedCharsSpecial[(int)randomBytes[i] % allowedCharsSpecial.Count]);
+            result.Insert(random.Next(0, result.Length - 1), allowedCharsSpecial[(int)randomBytes[specialIndex] % allowedCharsSpecial.Count]);
         }
         return result.ToString();
     }
@@ -59,9 +59,9 @@ public class Password
         rng.GetBytes(randomBytes);
         char[] chars = new char[passwordLength];
         int allowedCharCount = allowedChars.Length;
-        for (int i = 0; i < passwordLength; i++)
+        for (int index = 0; index < passwordLength; index++)
         {
-            chars[i] = allowedChars[(int)randomBytes[i] % allowedCharCount];
+            chars[index] = allowedChars[(int)randomBytes[index] % allowedCharCount];
         }
         return new string(chars);
     }

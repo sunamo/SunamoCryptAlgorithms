@@ -20,9 +20,9 @@ public partial class Asymmetric
         {
             return new DataCrypt(rsaCryptoProvider.Encrypt(dataCrypt.Bytes, false));
         }
-        catch (CryptographicException ex)
+        catch (CryptographicException exception)
         {
-            if (ex.Message.ToLower().IndexOf("bad length") > -1)
+            if (exception.Message.ToLower().IndexOf("bad length") > -1)
             {
                 throw new Exception(Translate.FromKey(XlfKeys.YourDataIsTooLargeRSAEncryptionIsDesignedToEncryptRelativelySmallAmountsOfDataTheExactByteLimitDependsOnTheKeySizeToEncryptMoreDataUseSymmetricEncryptionAndThenEncryptThatSymmetricKeyWithAsymmetricRSAEncryption) + ".");
             }
@@ -82,9 +82,9 @@ public partial class Asymmetric
             RSACryptoServiceProvider.UseMachineKeyStore = true;
             return rsa;
         }
-        catch (CryptographicException ex)
+        catch (CryptographicException exception)
         {
-            if (ex.Message.ToLower().IndexOf("csp for this implementation could not be acquired") > -1)
+            if (exception.Message.ToLower().IndexOf("csp for this implementation could not be acquired") > -1)
             {
                 throw new Exception(Translate.FromKey(XlfKeys.UnableToObtainCryptographicServiceProvider) + ". " + Translate.FromKey(XlfKeys.EitherThePermissionsAreIncorrectOnThe) + " 'C:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' folder, or the current security context '" + WindowsIdentity.GetCurrent().Name + "' does not have access to this folder.");
             }
