@@ -3,7 +3,7 @@
     <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>26.6.21.5</Version>
+    <Version>26.10.7.6</Version>
     <Description>Cryptographic algorithm classes (Asymmetric, Symmetric, Hash, Password, DataCrypt) extracted from SunamoShared</Description>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
