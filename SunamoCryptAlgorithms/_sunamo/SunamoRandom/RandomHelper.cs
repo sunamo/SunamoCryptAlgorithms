@@ -7,9 +7,9 @@ internal class RandomHelper
     internal static byte[] RandomBytes(int count)
     {
         var bytes = new byte[count];
-        for (var i = 0; i < count; i++)
+        for (var index = 0; index < count; index++)
         {
-            bytes[i] = (byte)random.Next(0, byte.MaxValue);
+            bytes[index] = (byte)random.Next(0, byte.MaxValue);
         }
         return bytes;
     }

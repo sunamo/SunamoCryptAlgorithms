@@ -9,9 +9,9 @@ public partial class Hash
         protected override void HashCore(byte[] array, int ibStart, int cbSize)
         {
             uint lookup = 0;
-            for (int i = ibStart; i <= cbSize - 1; i++)
+            for (int index = ibStart; index <= cbSize - 1; index++)
             {
-                lookup = _result & 0xff ^ array[i];
+                lookup = _result & 0xff ^ array[index];
                 _result = (_result & 0xffffff00) / 0x100 & 0xffffff;
                 _result = _result ^ _crcLookup[lookup];
             }

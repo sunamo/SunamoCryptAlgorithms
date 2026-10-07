@@ -6,13 +6,13 @@ public class CryptHelperAdvanced
     {
         var stringBuilder = new StringBuilder();
         int chunkLength;
-        for (int i = 0; i < text.Length; i += moveBase)
+        for (int index = 0; index < text.Length; index += moveBase)
         {
-            if (i + moveBase > text.Length - 1)
-                chunkLength = text.Length - i;
+            if (index + moveBase > text.Length - 1)
+                chunkLength = text.Length - index;
             else
                 chunkLength = moveBase;
-            stringBuilder.Append(InverseString(text.Substring(i, chunkLength)));
+            stringBuilder.Append(InverseString(text.Substring(index, chunkLength)));
         }
         return stringBuilder.ToString();
     }
@@ -20,9 +20,9 @@ public class CryptHelperAdvanced
     private static string InverseString(string text)
     {
         var stringBuilder = new StringBuilder();
-        for (int i = text.Length - 1; i >= 0; i--)
+        for (int index = text.Length - 1; index >= 0; index--)
         {
-            stringBuilder.Append(text[i]);
+            stringBuilder.Append(text[index]);
         }
         return stringBuilder.ToString();
     }
@@ -44,12 +44,12 @@ public class CryptHelperAdvanced
     {
         int newPlace;
         char character;
-        for (int i = 0; i < text.Length; i++)
+        for (int index = 0; index < text.Length; index++)
         {
-            newPlace = i * Convert.ToUInt16(text[i]);
+            newPlace = index * Convert.ToUInt16(text[index]);
             newPlace = newPlace % text.Length;
-            character = text[i];
-            text = text.Remove(i, 1);
+            character = text[index];
+            text = text.Remove(index, 1);
             text = text.Insert(newPlace, character.ToString());
         }
         return text;

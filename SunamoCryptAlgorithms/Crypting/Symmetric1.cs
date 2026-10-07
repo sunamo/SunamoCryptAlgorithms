@@ -60,9 +60,9 @@ public partial class Symmetric
         {
             cryptoStream.ReadExactly(buffer, 0, encryptedDataCrypt.Bytes.Length - 1);
         }
-        catch (CryptographicException ex)
+        catch (CryptographicException exception)
         {
-            throw new Exception(Translate.FromKey(XlfKeys.UnableToDecryptDataTheProvidedKeyMayBeInvalid) + "." + Exceptions.TextOfExceptions(ex));
+            throw new Exception(Translate.FromKey(XlfKeys.UnableToDecryptDataTheProvidedKeyMayBeInvalid) + "." + Exceptions.TextOfExceptions(exception));
         }
         finally
         {
