@@ -2,7 +2,6 @@ global using Diacritics.Extensions;
 global using SunamoCryptAlgorithms._sunamo;
 global using SunamoCryptAlgorithms._sunamo.SunamoCollections;
 global using SunamoCryptAlgorithms._sunamo.SunamoExceptions;
-global using SunamoCryptAlgorithms._sunamo.SunamoLang.SunamoI18N;
 global using SunamoCryptAlgorithms._sunamo.SunamoRandom;
 global using SunamoCryptAlgorithms.Crypting;
 global using System;
