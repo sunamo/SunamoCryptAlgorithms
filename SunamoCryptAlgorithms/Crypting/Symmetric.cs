@@ -122,7 +122,7 @@ public partial class Symmetric
             }
             else
             {
-                throw new Exception(Translate.FromKey(XlfKeys.NoKeyWasProvidedForTheDecryptionOperation) + "!");
+                throw new Exception("No key was provided for the decryption operation" + "!");
             }
         }
 
@@ -134,7 +134,7 @@ public partial class Symmetric
             }
             else
             {
-                throw new Exception(Translate.FromKey(XlfKeys.NoInitializationVectorWasProvidedForTheDecryptionOperation) + "!");
+                throw new Exception("No initialization vector was provided for the decryption operation" + "!");
             }
         }
 

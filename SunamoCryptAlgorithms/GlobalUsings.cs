@@ -1,5 +1,4 @@
 global using Diacritics.Extensions;
-global using SunamoCryptAlgorithms._public.SunamoXlfKeys;
 global using SunamoCryptAlgorithms._sunamo;
 global using SunamoCryptAlgorithms._sunamo.SunamoCollections;
 global using SunamoCryptAlgorithms._sunamo.SunamoExceptions;

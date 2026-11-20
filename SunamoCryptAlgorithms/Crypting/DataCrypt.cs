@@ -6,7 +6,7 @@ public class DataCrypt
     private int maxBytes = 0;
     private int minBytes = 0;
     private int stepBytes = 0;
-    public static Encoding DefaultEncoding = Encoding.GetEncoding(Translate.FromKey(XlfKeys.Windows1252));
+    public static Encoding DefaultEncoding = Encoding.GetEncoding("Windows1252");
     public Encoding Encoding = DefaultEncoding;
 
     public DataCrypt()

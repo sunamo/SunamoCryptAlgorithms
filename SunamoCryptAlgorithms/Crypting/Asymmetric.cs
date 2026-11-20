@@ -60,8 +60,8 @@ public partial class Asymmetric
 
         public void LoadFromXml(string keyXml)
         {
-            Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, Translate.FromKey(XlfKeys.Modulus));
-            Exponent = UtilsNonNetStandard.GetXmlElement(keyXml, Translate.FromKey(XlfKeys.Exponent));
+            Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, "Modulus");
+            Exponent = UtilsNonNetStandard.GetXmlElement(keyXml, "Exponent");
         }
 
         public RSAParameters ToParameters()

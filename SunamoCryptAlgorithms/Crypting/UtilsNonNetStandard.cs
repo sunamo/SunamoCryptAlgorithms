@@ -7,7 +7,7 @@ public class UtilsNonNetStandard
         var match = Regex.Match(xml, "<" + element + ">(?<Element>[^>]*)</" + element + ">", RegexOptions.IgnoreCase);
         if (match is null)
         {
-            throw new Exception(Translate.FromKey(XlfKeys.CouldNotFind) + " " + element + "></" + element + "  " + Translate.FromKey(XlfKeys.inProvidedPublicKeyXML) + ".");
+            throw new Exception("CouldNotFind" + " " + element + "></" + element + "  " + "In provided public key XML" + ".");
         }
         return match.Groups["Element"].ToString();
     }

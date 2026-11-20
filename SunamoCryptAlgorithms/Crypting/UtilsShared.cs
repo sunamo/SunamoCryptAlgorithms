@@ -41,7 +41,7 @@ public class Utils
         }
         catch (Exception exception)
         {
-            throw new Exception(Translate.FromKey(XlfKeys.TheProvidedStringDoesNotAppearToBeHexEncoded) + ":" + Environment.NewLine + hexEncoded + Environment.NewLine + Exceptions.TextOfExceptions(exception));
+            throw new Exception("The provided string does not appear to be hex encoded" + ":" + Environment.NewLine + hexEncoded + Environment.NewLine + Exceptions.TextOfExceptions(exception));
         }
     }
 
@@ -58,7 +58,7 @@ public class Utils
         }
         catch (FormatException exception)
         {
-            throw new Exception(Translate.FromKey(XlfKeys.TheProvidedStringDoesNotAppearToBeBase64Encoded) + ":" + Environment.NewLine + base64Encoded + Environment.NewLine + exception.Message);
+            throw new Exception("The provided string does not appear to be base 64 encoded" + ":" + Environment.NewLine + base64Encoded + Environment.NewLine + exception.Message);
         }
     }
 

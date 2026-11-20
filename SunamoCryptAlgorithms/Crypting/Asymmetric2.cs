@@ -24,7 +24,7 @@ public partial class Asymmetric
         {
             if (exception.Message.ToLower().IndexOf("bad length") > -1)
             {
-                throw new Exception(Translate.FromKey(XlfKeys.YourDataIsTooLargeRSAEncryptionIsDesignedToEncryptRelativelySmallAmountsOfDataTheExactByteLimitDependsOnTheKeySizeToEncryptMoreDataUseSymmetricEncryptionAndThenEncryptThatSymmetricKeyWithAsymmetricRSAEncryption) + ".");
+                throw new Exception("Your data is too large RSA encryption is designed to encrypt relatively small amounts of data the exact byte limit depends on the key size to encrypt more data use symmetric encryption and then encrypt that symmetric key with asymmetric RSA encryption" + ".");
             }
             else
             {
@@ -61,7 +61,7 @@ public partial class Asymmetric
         catch (Exception)
         {
             string keyType = isPrivate ? "private" : "public";
-            throw new Exception(string.Format(Translate.FromKey(XlfKeys.TheProvided0EncryptionKeyXMLDoesNotAppearToBeValid) + ".", keyType));
+            throw new Exception(string.Format("The provided 0 encryption key XML does not appear to be valid" + ".", keyType));
         }
     }
 
@@ -86,7 +86,7 @@ public partial class Asymmetric
         {
             if (exception.Message.ToLower().IndexOf("csp for this implementation could not be acquired") > -1)
             {
-                throw new Exception(Translate.FromKey(XlfKeys.UnableToObtainCryptographicServiceProvider) + ". " + Translate.FromKey(XlfKeys.EitherThePermissionsAreIncorrectOnThe) + " 'C:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' folder, or the current security context '" + WindowsIdentity.GetCurrent().Name + "' does not have access to this folder.");
+                throw new Exception("Unable to obtain cryptographic service provider" + ". " + "Either the permissions are incorrect on the" + " 'C:\\Documents and Settings\\All Users\\Application DataCrypt\\Microsoft\\Crypto\\RSA\\MachineKeys' folder, or the current security context '" + WindowsIdentity.GetCurrent().Name + "' does not have access to this folder.");
             }
             else
             {

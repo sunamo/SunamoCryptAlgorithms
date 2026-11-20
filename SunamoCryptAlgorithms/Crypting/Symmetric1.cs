@@ -62,7 +62,7 @@ public partial class Symmetric
         }
         catch (CryptographicException exception)
         {
-            throw new Exception(Translate.FromKey(XlfKeys.UnableToDecryptDataTheProvidedKeyMayBeInvalid) + "." + Exceptions.TextOfExceptions(exception));
+            throw new Exception("Unable to decrypt data the provided key may be invalid" + "." + Exceptions.TextOfExceptions(exception));
         }
         finally
         {
