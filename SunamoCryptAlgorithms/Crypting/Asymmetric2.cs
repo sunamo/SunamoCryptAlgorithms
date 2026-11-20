@@ -2,12 +2,24 @@ namespace SunamoCryptAlgorithms.Crypting;
 
 public partial class Asymmetric
 {
+    /// <summary>
+    /// Encrypt.
+    /// </summary>
+    /// <param name="dataCrypt">The data crypt.</param>
+    /// <param name="publicKey">The public key.</param>
+    /// <returns>The encrypt result.</returns>
     public DataCrypt Encrypt(DataCrypt dataCrypt, PublicKey publicKey)
     {
         rsaCryptoProvider.ImportParameters(publicKey.ToParameters());
         return EncryptPrivate(dataCrypt);
     }
 
+    /// <summary>
+    /// Encrypt.
+    /// </summary>
+    /// <param name="dataCrypt">The data crypt.</param>
+    /// <param name="publicKeyXml">The public key xml.</param>
+    /// <returns>The encrypt result.</returns>
     public DataCrypt Encrypt(DataCrypt dataCrypt, string publicKeyXml)
     {
         LoadKeyXml(publicKeyXml, false);
@@ -33,6 +45,11 @@ public partial class Asymmetric
         }
     }
 
+    /// <summary>
+    /// Decrypt.
+    /// </summary>
+    /// <param name="encryptedDataCrypt">The encrypted data crypt.</param>
+    /// <returns>The decrypt result.</returns>
     public DataCrypt Decrypt(DataCrypt encryptedDataCrypt)
     {
         var privateKey = new PrivateKey();
@@ -40,12 +57,24 @@ public partial class Asymmetric
         return Decrypt(encryptedDataCrypt, privateKey);
     }
 
+    /// <summary>
+    /// Decrypt.
+    /// </summary>
+    /// <param name="encryptedDataCrypt">The encrypted data crypt.</param>
+    /// <param name="privateKey">The private key.</param>
+    /// <returns>The decrypt result.</returns>
     public DataCrypt Decrypt(DataCrypt encryptedDataCrypt, PrivateKey privateKey)
     {
         rsaCryptoProvider.ImportParameters(privateKey.ToParameters());
         return DecryptPrivate(encryptedDataCrypt);
     }
 
+    /// <summary>
+    /// Decrypt.
+    /// </summary>
+    /// <param name="encryptedDataCrypt">The encrypted data crypt.</param>
+    /// <param name="privateKeyXml">The private key xml.</param>
+    /// <returns>The decrypt result.</returns>
     public DataCrypt Decrypt(DataCrypt encryptedDataCrypt, string privateKeyXml)
     {
         LoadKeyXml(privateKeyXml, true);

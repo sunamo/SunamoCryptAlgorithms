@@ -1,7 +1,14 @@
 namespace SunamoCryptAlgorithms.Crypting;
 
+/// <summary>
+/// Represents the password type.
+/// </summary>
 public class Password
 {
+    /// <summary>
+    /// Create random strong password.
+    /// </summary>
+    /// <returns>The create random strong password result.</returns>
     public static string CreateRandomStrongPassword()
     {
         int countCharsLower = 3;
@@ -45,12 +52,22 @@ public class Password
     private string password;
     private int salt;
 
+    /// <summary>
+    /// Initializes a new instance of the password class.
+    /// </summary>
+    /// <param name="password">The password.</param>
+    /// <param name="saltValue">The salt value.</param>
     public Password(string password, int saltValue)
     {
         this.password = password;
         salt = saltValue;
     }
 
+    /// <summary>
+    /// Create random password.
+    /// </summary>
+    /// <param name="passwordLength">The password length.</param>
+    /// <returns>The create random password result.</returns>
     public static string CreateRandomPassword(int passwordLength)
     {
         String allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ23456789";
@@ -66,6 +83,10 @@ public class Password
         return new string(chars);
     }
 
+    /// <summary>
+    /// Create random salt.
+    /// </summary>
+    /// <returns>The create random salt result.</returns>
     public static int CreateRandomSalt()
     {
         Byte[] saltBytes = new Byte[4];
@@ -74,6 +95,10 @@ public class Password
         return ((((int)saltBytes[0]) << 24) + (((int)saltBytes[1]) << 16) + (((int)saltBytes[2]) << 8) + ((int)saltBytes[3]));
     }
 
+    /// <summary>
+    /// Compute salted hash.
+    /// </summary>
+    /// <returns>The compute salted hash result.</returns>
     public string ComputeSaltedHash()
     {
         var encoder = new ASCIIEncoding();

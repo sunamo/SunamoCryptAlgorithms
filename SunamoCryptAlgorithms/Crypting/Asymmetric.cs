@@ -1,5 +1,8 @@
 namespace SunamoCryptAlgorithms.Crypting;
 
+/// <summary>
+/// Represents the asymmetric type.
+/// </summary>
 public partial class Asymmetric
 {
     private RSACryptoServiceProvider rsaCryptoProvider;
@@ -23,26 +26,50 @@ public partial class Asymmetric
     private const string keyCoefficient = "PrivateKey.InverseQ";
     private const string keyPrivateExponent = "PrivateKey.D";
 
+    /// <summary>
+    /// Represents the public key type.
+    /// </summary>
     public class PublicKey
     {
+        /// <summary>
+        /// The modulus.
+        /// </summary>
         public string Modulus = null!;
+        /// <summary>
+        /// The exponent.
+        /// </summary>
         public string Exponent = null!;
 
+        /// <summary>
+        /// Public key.
+        /// </summary>
+        /// <returns>The public key result.</returns>
         public PublicKey()
         {
         }
 
+        /// <summary>
+        /// Public key.
+        /// </summary>
+        /// <returns>The public key result.</returns>
         public PublicKey(string keyXml)
         {
             LoadFromXml(keyXml);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the load from config class.
+        /// </summary>
+        /// <param name="keyXml">The key xml.</param>
         public void LoadFromConfig()
         {
             Modulus = UtilsNonNetStandard.GetConfigString(keyModulus, true);
             Exponent = UtilsNonNetStandard.GetConfigString(keyExponent, true);
         }
 
+        /// <summary>
+        /// To config section.
+        /// </summary>
         public string ToConfigSection()
         {
             var stringBuilder = new StringBuilder();
@@ -51,6 +78,10 @@ public partial class Asymmetric
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// Export to config file.
+        /// </summary>
+        /// <returns>The export to config file result.</returns>
         public void ExportToConfigFile(string filePath)
         {
             var streamWriter = new StreamWriter(filePath, false);
@@ -58,12 +89,22 @@ public partial class Asymmetric
             streamWriter.Close();
         }
 
+        /// <summary>
+        /// Load from xml.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <param name="false">The false.</param>
+        /// <returns>The load from xml result.</returns>
         public void LoadFromXml(string keyXml)
         {
             Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, "Modulus");
             Exponent = UtilsNonNetStandard.GetXmlElement(keyXml, "Exponent");
         }
 
+        /// <summary>
+        /// To parameters.
+        /// </summary>
+        /// <param name="keyXml">The key xml.</param>
         public RSAParameters ToParameters()
         {
             var parameters = new RSAParameters();
@@ -72,6 +113,10 @@ public partial class Asymmetric
             return parameters;
         }
 
+        /// <summary>
+        /// To xml.
+        /// </summary>
+        /// <returns>The to xml result.</returns>
         public string ToXml()
         {
             var stringBuilder = new StringBuilder();
@@ -82,6 +127,10 @@ public partial class Asymmetric
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the export to xml file class.
+        /// </summary>
+        /// <param name="Modulus)">The modulus.</param>
         public void ExportToXmlFile(string filePath)
         {
             var streamWriter = new StreamWriter(filePath, false);

@@ -3,26 +3,63 @@ namespace SunamoCryptAlgorithms.Crypting;
 [System.Runtime.Versioning.SupportedOSPlatform("windows")]
 public partial class Asymmetric
 {
+    /// <summary>
+    /// Represents the private key type.
+    /// </summary>
     public class PrivateKey
     {
+        /// <summary>
+        /// The modulus.
+        /// </summary>
         public string Modulus = null!;
+        /// <summary>
+        /// The exponent.
+        /// </summary>
         public string Exponent = null!;
+        /// <summary>
+        /// The prime p.
+        /// </summary>
         public string PrimeP = null!;
+        /// <summary>
+        /// The prime q.
+        /// </summary>
         public string PrimeQ = null!;
+        /// <summary>
+        /// The prime exponent p.
+        /// </summary>
         public string PrimeExponentP = null!;
+        /// <summary>
+        /// The prime exponent q.
+        /// </summary>
         public string PrimeExponentQ = null!;
+        /// <summary>
+        /// The coefficient.
+        /// </summary>
         public string Coefficient = null!;
+        /// <summary>
+        /// The private exponent.
+        /// </summary>
         public string PrivateExponent = null!;
 
+        /// <summary>
+        /// Initializes a new instance of the private key class.
+        /// </summary>
         public PrivateKey()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the private key class.
+        /// </summary>
+        /// <param name="keyXml">The key xml.</param>
         public PrivateKey(string keyXml)
         {
             LoadFromXml(keyXml);
         }
 
+        /// <summary>
+        /// Load from config.
+        /// </summary>
         public void LoadFromConfig()
         {
             Modulus = UtilsNonNetStandard.GetConfigString(keyModulus, true);
@@ -35,6 +72,10 @@ public partial class Asymmetric
             PrivateExponent = UtilsNonNetStandard.GetConfigString(keyPrivateExponent, true);
         }
 
+        /// <summary>
+        /// To parameters.
+        /// </summary>
+        /// <returns>The to parameters result.</returns>
         public RSAParameters ToParameters()
         {
             var parameters = new RSAParameters();
@@ -49,6 +90,12 @@ public partial class Asymmetric
             return parameters;
         }
 
+        /// <summary>
+        /// To config section.
+        /// </summary>
+        /// <param name="keyModulus">The key modulus.</param>
+        /// <param name="true">The true.</param>
+        /// <returns>The to config section result.</returns>
         public string ToConfigSection()
         {
             var stringBuilder = new StringBuilder();
@@ -63,6 +110,11 @@ public partial class Asymmetric
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// Export to config file.
+        /// </summary>
+        /// <param name="Exponent">The exponent.</param>
+        /// <returns>The export to config file result.</returns>
         public void ExportToConfigFile(string filePath)
         {
             var streamWriter = new StreamWriter(filePath, false);
@@ -70,6 +122,10 @@ public partial class Asymmetric
             streamWriter.Close();
         }
 
+        /// <summary>
+        /// Load from xml.
+        /// </summary>
+        /// <returns>The load from xml result.</returns>
         public void LoadFromXml(string keyXml)
         {
             Modulus = UtilsNonNetStandard.GetXmlElement(keyXml, "Modulus");
@@ -82,6 +138,10 @@ public partial class Asymmetric
             PrivateExponent = UtilsNonNetStandard.GetXmlElement(keyXml, "D");
         }
 
+        /// <summary>
+        /// Initializes a new instance of the to xml class.
+        /// </summary>
+        /// <param name="Coefficient)">The coefficient.</param>
         public string ToXml()
         {
             var stringBuilder = new StringBuilder();
@@ -98,6 +158,12 @@ public partial class Asymmetric
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// Export to xml file.
+        /// </summary>
+        /// <param name="keyXml">The key xml.</param>
+        /// <param name=""P"">The p.</param>
+        /// <returns>The export to xml file result.</returns>
         public void ExportToXmlFile(string filePath)
         {
             var streamWriter = new StreamWriter(filePath, false);
@@ -106,31 +172,57 @@ public partial class Asymmetric
         }
     }
 
+    /// <summary>
+    /// Asymmetric.
+    /// </summary>
+    /// <returns>The asymmetric result.</returns>
     public Asymmetric()
     {
         rsaCryptoProvider = GetRSAProvider();
     }
 
+    /// <summary>
+    /// Initializes a new instance of the asymmetric class.
+    /// </summary>
+    /// <param name="Exponent)">The exponent.</param>
     public Asymmetric(int keySize)
     {
         this.keySize = keySize;
         rsaCryptoProvider = GetRSAProvider();
     }
 
+    /// <summary>
+    /// The key container name.
+    /// </summary>
     public string KeyContainerName
     {
         get => keyContainerName;
         set => keyContainerName = value;
     }
 
+    /// <summary>
+    /// Gets the key size bits.
+    /// </summary>
     public int KeySizeBits => rsaCryptoProvider.KeySize;
 
+    /// <summary>
+    /// Gets the key size max bits.
+    /// </summary>
     public int KeySizeMaxBits => rsaCryptoProvider.LegalKeySizes[0].MaxSize;
 
+    /// <summary>
+    /// Gets the key size min bits.
+    /// </summary>
     public int KeySizeMinBits => rsaCryptoProvider.LegalKeySizes[0].MinSize;
 
+    /// <summary>
+    /// Gets the key size step bits.
+    /// </summary>
     public int KeySizeStepBits => rsaCryptoProvider.LegalKeySizes[0].SkipSize;
 
+    /// <summary>
+    /// The default public key.
+    /// </summary>
     public PublicKey DefaultPublicKey
     {
         get

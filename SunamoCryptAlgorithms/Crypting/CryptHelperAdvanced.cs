@@ -1,5 +1,8 @@
 namespace SunamoCryptAlgorithms.Crypting;
 
+/// <summary>
+/// Represents the crypt helper advanced type.
+/// </summary>
 public class CryptHelperAdvanced
 {
     private static string InverseByBase(string text, int moveBase)
