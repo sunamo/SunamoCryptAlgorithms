@@ -2,6 +2,9 @@ namespace SunamoCryptAlgorithms.Crypting;
 
 public partial class Asymmetric
 {
+    /// <summary>
+    /// The default private key.
+    /// </summary>
     public PrivateKey DefaultPrivateKey
     {
         get
@@ -12,6 +15,12 @@ public partial class Asymmetric
         }
     }
 
+    /// <summary>
+    /// Generate new keyset.
+    /// </summary>
+    /// <param name="publicKey">The public key.</param>
+    /// <param name="privateKey">The private key.</param>
+    /// <returns>The generate new keyset result.</returns>
     public void GenerateNewKeyset(ref PublicKey publicKey, ref PrivateKey privateKey)
     {
         string? publicKeyXml = null;
@@ -21,6 +30,11 @@ public partial class Asymmetric
         privateKey = new PrivateKey(privateKeyXml!);
     }
 
+    /// <summary>
+    /// Generate new keyset.
+    /// </summary>
+    /// <param name="privateKeyXml!">The private key xml.</param>
+    /// <returns>The generate new keyset result.</returns>
     public void GenerateNewKeyset(ref string publicKeyXml, ref string privateKeyXml)
     {
         var rsa = RSA.Create();
@@ -28,6 +42,11 @@ public partial class Asymmetric
         privateKeyXml = rsa.ToXmlString(true);
     }
 
+    /// <summary>
+    /// Encrypt.
+    /// </summary>
+    /// <param name="true">The true.</param>
+    /// <returns>The encrypt result.</returns>
     public DataCrypt Encrypt(DataCrypt dataCrypt)
     {
         var publicKey = DefaultPublicKey;

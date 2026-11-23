@@ -1,15 +1,33 @@
 namespace SunamoCryptAlgorithms.Crypting;
 
+/// <summary>
+/// Represents the symmetric type.
+/// </summary>
 public partial class Symmetric
 {
     private const string defaultInitializationVector = "%1Az=-@qT";
     private const int bufferSize = 2048;
 
+    /// <summary>
+    /// Represents the provider type.
+    /// </summary>
     public enum Provider
     {
+        /// <summary>
+        /// The DES value.
+        /// </summary>
         DES,
+        /// <summary>
+        /// The RC 2 value.
+        /// </summary>
         RC2,
+        /// <summary>
+        /// The rijndael value.
+        /// </summary>
         Rijndael,
+        /// <summary>
+        /// The triple DES value.
+        /// </summary>
         TripleDES
     }
 
@@ -21,6 +39,10 @@ public partial class Symmetric
     {
     }
 
+    /// <summary>
+    /// Symmetric.
+    /// </summary>
+    /// <returns>The symmetric result.</returns>
     public Symmetric(Provider provider, bool isUsingDefaultInitializationVector)
     {
         switch (provider)
@@ -51,6 +73,9 @@ public partial class Symmetric
         }
     }
 
+    /// <summary>
+    /// The key size bytes.
+    /// </summary>
     public int KeySizeBytes
     {
         get => symmetricAlgorithm.KeySize / 8;
@@ -62,6 +87,9 @@ public partial class Symmetric
         }
     }
 
+    /// <summary>
+    /// The key size bits.
+    /// </summary>
     public int KeySizeBits
     {
         get => symmetricAlgorithm.KeySize;
@@ -73,6 +101,9 @@ public partial class Symmetric
         }
     }
 
+    /// <summary>
+    /// The key.
+    /// </summary>
     public DataCrypt Key
     {
         get => encryptionKey;
@@ -86,6 +117,9 @@ public partial class Symmetric
         }
     }
 
+    /// <summary>
+    /// The intialization vector.
+    /// </summary>
     public DataCrypt IntializationVector
     {
         get => initializationVector;
@@ -98,6 +132,10 @@ public partial class Symmetric
         }
     }
 
+    /// <summary>
+    /// Random initialization vector.
+    /// </summary>
+    /// <returns>The random initialization vector result.</returns>
     public DataCrypt RandomInitializationVector()
     {
         symmetricAlgorithm.GenerateIV();
@@ -105,6 +143,10 @@ public partial class Symmetric
         return dataCrypt;
     }
 
+    /// <summary>
+    /// Random key.
+    /// </summary>
+    /// <returns>The random key result.</returns>
     public DataCrypt RandomKey()
     {
         symmetricAlgorithm.GenerateKey();
@@ -122,7 +164,7 @@ public partial class Symmetric
             }
             else
             {
-                throw new Exception(Translate.FromKey(XlfKeys.NoKeyWasProvidedForTheDecryptionOperation) + "!");
+                throw new Exception("No key was provided for the decryption operation" + "!");
             }
         }
 
@@ -134,7 +176,7 @@ public partial class Symmetric
             }
             else
             {
-                throw new Exception(Translate.FromKey(XlfKeys.NoInitializationVectorWasProvidedForTheDecryptionOperation) + "!");
+                throw new Exception("No initialization vector was provided for the decryption operation" + "!");
             }
         }
 
@@ -142,12 +184,21 @@ public partial class Symmetric
         symmetricAlgorithm.IV = initializationVector.Bytes;
     }
 
+    /// <summary>
+    /// Encrypt.
+    /// </summary>
+    /// <returns>The encrypt result.</returns>
     public DataCrypt Encrypt(DataCrypt dataCrypt, DataCrypt key)
     {
         Key = key;
         return Encrypt(dataCrypt);
     }
 
+    /// <summary>
+    /// Encrypt.
+    /// </summary>
+    /// <param name="initializationVector.IsEmpty">The initialization vector is empty.</param>
+    /// <returns>The encrypt result.</returns>
     public DataCrypt Encrypt(DataCrypt dataCrypt)
     {
         var memoryStream = new MemoryStream();
@@ -159,6 +210,12 @@ public partial class Symmetric
         return new DataCrypt(memoryStream.ToArray());
     }
 
+    /// <summary>
+    /// Encrypt.
+    /// </summary>
+    /// <param name="dataCrypt">The data crypt.</param>
+    /// <param name="key">The key.</param>
+    /// <returns>The encrypt result.</returns>
     public DataCrypt Encrypt(Stream stream, DataCrypt key, DataCrypt initVector)
     {
         IntializationVector = initVector;
@@ -166,6 +223,12 @@ public partial class Symmetric
         return Encrypt(stream);
     }
 
+    /// <summary>
+    /// Encrypt.
+    /// </summary>
+    /// <param name="dataCrypt">The data crypt.</param>
+    /// <param name="key">The key.</param>
+    /// <returns>The encrypt result.</returns>
     public DataCrypt Encrypt(Stream stream, DataCrypt key)
     {
         Key = key;

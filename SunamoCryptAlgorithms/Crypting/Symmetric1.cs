@@ -2,6 +2,11 @@ namespace SunamoCryptAlgorithms.Crypting;
 
 public partial class Symmetric
 {
+    /// <summary>
+    /// Encrypt.
+    /// </summary>
+    /// <param name="stream">The stream.</param>
+    /// <returns>The encrypt result.</returns>
     public DataCrypt Encrypt(Stream stream)
     {
         var memoryStream = new MemoryStream();
@@ -20,18 +25,35 @@ public partial class Symmetric
         return new DataCrypt(memoryStream.ToArray());
     }
 
+    /// <summary>
+    /// Decrypt.
+    /// </summary>
+    /// <param name="encryptedDataCrypt">The encrypted data crypt.</param>
+    /// <param name="key">The key.</param>
+    /// <returns>The decrypt result.</returns>
     public DataCrypt Decrypt(DataCrypt encryptedDataCrypt, DataCrypt key)
     {
         Key = key;
         return Decrypt(encryptedDataCrypt);
     }
 
+    /// <summary>
+    /// Decrypt.
+    /// </summary>
+    /// <param name="encryptedStream">The encrypted stream.</param>
+    /// <param name="key">The key.</param>
+    /// <returns>The decrypt result.</returns>
     public DataCrypt Decrypt(Stream encryptedStream, DataCrypt key)
     {
         Key = key;
         return Decrypt(encryptedStream);
     }
 
+    /// <summary>
+    /// Decrypt.
+    /// </summary>
+    /// <param name="encryptedStream">The encrypted stream.</param>
+    /// <returns>The decrypt result.</returns>
     public DataCrypt Decrypt(Stream encryptedStream)
     {
         var memoryStream = new MemoryStream();
@@ -50,6 +72,11 @@ public partial class Symmetric
         return new DataCrypt(memoryStream.ToArray());
     }
 
+    /// <summary>
+    /// Decrypt.
+    /// </summary>
+    /// <param name="encryptedDataCrypt">The encrypted data crypt.</param>
+    /// <returns>The decrypt result.</returns>
     public DataCrypt Decrypt(DataCrypt encryptedDataCrypt)
     {
         var memoryStream = new MemoryStream(encryptedDataCrypt.Bytes, 0, encryptedDataCrypt.Bytes.Length);
@@ -62,7 +89,7 @@ public partial class Symmetric
         }
         catch (CryptographicException exception)
         {
-            throw new Exception(Translate.FromKey(XlfKeys.UnableToDecryptDataTheProvidedKeyMayBeInvalid) + "." + Exceptions.TextOfExceptions(exception));
+            throw new Exception("Unable to decrypt data the provided key may be invalid" + "." + Exceptions.TextOfExceptions(exception));
         }
         finally
         {

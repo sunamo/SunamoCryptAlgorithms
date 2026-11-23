@@ -1,4 +1,3 @@
-// variables names: ok
 namespace RunnerCryptAlgorithms;
 
 internal class Program
